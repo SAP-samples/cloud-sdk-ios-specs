@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.framework            = 'SAPML'
   spec.dependency           'SAPCommon', '3.1.300'
   spec.dependency           'SAPFiori', '3.1.300'
-  # spec.dependency           'GoogleMobileVision', '~> 1.3.0' // Must be added to application Podfile, since source is not consistent.
+  spec.dependency           'GoogleMobileVision/Detector', '~> 1.3.0' #// Must be added to application Podfile, since source is not consistent.
   spec.license              = { :type => 'SAP Developer License', :text => <<-LICENSE
   SAP DEVELOPER LICENSE AGREEMENT
 
