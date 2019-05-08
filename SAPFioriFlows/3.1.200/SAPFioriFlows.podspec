@@ -9,9 +9,9 @@ Pod::Spec.new do |spec|
   spec.source               = { :http => 'https://repositories.sap.ondemand.com/nexus3/repository/maven73555000100900003122/com/sap/mobile/platform/client/hcp/sdk/ios/flows/SAPFioriFlows/3.1.200/SAPFioriFlows-3.1.200-Release-fat.zip' }
   spec.vendored_frameworks  = 'SAPFioriFlows.framework'
   spec.framework            = 'SAPFioriFlows'
-  spec.dependency           'SAPCommon', '~> 3.1.200'
-  spec.dependency           'SAPFoundation', '~> 3.1.200'
-  spec.dependency           'SAPFiori', '~> 3.1.200'
+  spec.dependency           'SAPCommon', '3.1.200'
+  spec.dependency           'SAPFoundation', '3.1.200'
+  spec.dependency           'SAPFiori', '3.1.200'
   spec.license              = { :type => 'SAP Developer License', :text => <<-LICENSE
   SAP DEVELOPER LICENSE AGREEMENT
 
