@@ -1,10 +1,10 @@
-The SAP iOS SDK CocoaPods Repo
+# The SAP iOS SDK CocoaPods Repo
 
 This repository contains the CocoaPods specifications for frameworks in the SAP Cloud Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the SAP Developer Site.
 
-Authentication
+# Authentication
 
-The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running pod update with your Podfile, you must visit the [Technical Users' UI Home Page](https://shipments.pages.repositories.sap.ondemand.com/docs/shipment-sap-client.html#repository-based-shipment-channel-technical-users-management-ui), obtain a technical username/password, and save that to a file at ~/.netrc. This is documented [below].
+The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running pod update with your Podfile, you must visit the [Technical Users' UI Home Page](https://shipments.pages.repositories.sap.ondemand.com/docs/shipment-sap-client.html#repository-based-shipment-channel-technical-users-management-ui), obtain a technical username/password, and save that to a file at `~/.netrc`. This is documented [below].
 
 # Usage
 ## CocoaPods
