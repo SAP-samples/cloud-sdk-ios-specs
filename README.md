@@ -2,9 +2,53 @@
 
 This repository contains the CocoaPods specifications for frameworks in the SAP Cloud Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the SAP Developer Site.
 
-# Authentication
+# Requirements
 
-The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running pod update with your Podfile, you must visit the [Technical Users' UI Home Page](https://shipments.pages.repositories.sap.ondemand.com/docs/shipment-sap-client.html#repository-based-shipment-channel-technical-users-management-ui), obtain a technical username/password, and save that to a file at `~/.netrc`. This is documented [below].
+1. Ruby
+2. Cocoapods dependency manager
+3. Technical user & password, for [repositories.sap.ondemand.com](https://shipments.pages.repositories.sap.ondemand.com/docs/shipment-sap-client.html#repository-based-shipment-channel-technical-users-management-ui)
+4. Apple Xcode IDE
+
+# Download and Installation
+
+## Installing Ruby
+
+Ruby versions 2.0 and above are included by default in macOS releases since at least El Capitan (10.11).  Additional installation techniques are documented [here](https://www.ruby-lang.org/en/documentation/installation/).
+
+Homebrew is a commonly used package manager on macOS.  Installing Ruby using Homebrew is easy:
+
+```shell
+brew install ruby
+```
+
+## Installing Cocoapods
+
+Cocoapods is a dependency manager for Swift and Objective-C Cocoa projects.
+
+Documentation is available at [cocoapods.org](https://cocoapods.org/).
+Installation is a Ruby `gem install` command; updates are done with `gem` as well.
+
+```shell
+$ sudo gem install cocoapods
+```
+
+## Installing Apple Xcode IDE
+
+Xcode may be installed via the Mac App Store, or, specific versions may be downloaded at [developer.apple.com/download](https://developer.apple.com/download/).
+
+The current version of Xcode which is supported by the latest SAP binaries is Xcode 10.2.x.
+
+# Configuration
+
+## Obtaining Technical user & password
+
+The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running `pod update`, you must visit the [Technical Users' UI Home Page](https://repositories.sap.ondemand.com/ui) to obtain a technical username/password.  
+
+ > SAP Customers & Partners:  use your **S-User** to authenticate to repoistories.sap.ondemand.com.
+ > SAP Employees: use your SAP email & GLOBAL password to authenticate 
+
+
+ and save that to a file at `~/.netrc`. This is documented [below].
 
 # Usage
 ## CocoaPods
@@ -77,3 +121,29 @@ Use this command only when you want to update pods to a newer version.
 ```shell
 pod update [PODNAME]
 ```
+# Limitations
+
+ - SAPML framework is not currently supported as a managed dependency, due to a naming conflict in a dependent framework.
+
+# Known Issues
+
+None at this time.
+
+# How to obtain support
+
+For an issue related to the contents of this repository, please file an Issue here in the github.com project.
+
+For issues related to any of the referenced resources and binaries, please file a support ticket to SAP through the regular channels.
+
+# Contributing
+
+If you wish to make a contribution to the repository, please submit a Pull Request.  It will be reviewed by the maintainers, however, we cannot commit to merging all contributions.
+
+# To-Do (upcoming changes)
+
+ - [] Support for Carthage binary distribution
+ - [] Support for Cocoapods, for SAPML framemowrk
+
+# License
+
+The content of this repository is licensed under [LICENSE]().  The referenced resources and binaries are licensed under the individual terms of their associated license(s).
