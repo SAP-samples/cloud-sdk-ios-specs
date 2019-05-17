@@ -44,90 +44,118 @@ The current version of Xcode which is supported by the latest SAP binaries is Xc
 
 The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running `pod update`, you must visit the [Technical Users' UI Home Page](https://repositories.sap.ondemand.com/ui) to obtain a technical username/password.  
 
- > SAP Customers & Partners:  use your **S-User** to authenticate to repoistories.sap.ondemand.com.
- > SAP Employees: use your SAP email & GLOBAL password to authenticate 
+ > SAP Customers & Partners:  use your **S-User** credentials
 
+ > SAP Employees: use your **SAP email username & GLOBAL** credentials
 
- and save that to a file at `~/.netrc`. This is documented [below].
+<img src="https://github.com/SAP/cloud-sdk-ios-podspecs/blob/resources/gif/GetCredentialsFromRepo.gif?raw=true" width=600>
 
-# Usage
-## CocoaPods
-CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.
-## Installing CocoaPods
-Instructions are available on [CocoaPods' site](https://cocoapods.org/).
-Basically the installation is a one line command.
-```shell
-$ sudo gem install cocoapods
+## Installing credential
+
+Open, or create a new file at `~/.netrc`.
+
+Add an entry which includes the username password credential pair, as follows:
+
+```
+machine repositories.sap.ondemand.com 
+    login sap-xxxxxx 
+    password xxxxxxxxxxxxxxxxxx
 ```
 
-## Create a Podfile
-`Podfile` is a specific file for CocoaPods where the libraries are listed to use in the project. To filename should be `Podfile`.
-This `Podfile` shows that in the `CocoaPodsTestApp` project `SAPCommon` and `SAPFoundation` libraries will be used. All the dependencies should be written here, before using the project.
-The `source` should point to this repository.
-```ruby
+The **netrc** credential technique is a stand **cURL** API.  For complete documentation, see [gnu.org](https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html).
+
+# Usage
+
+## Supported SAP Binary Dependencies (pods)
+
+Specs for the following pods are registered in the repository source:  `https://github.com/SAP/cloud-sdk-ios-podspecs`.
+
+ - `SAPFoundation`
+ - `SAPCommon`
+ - `SAPFiori`
+ - `SAPFioriFlows`
+ - `SAPOData`
+ - `SAPOfflineOData`
+
+ ### Example Podfile with SAP Dependencies
+
+ ```ruby
 source 'https://github.com/SAP/cloud-sdk-ios-podspecs'
 
 platform :ios, '11.0'
 use_frameworks!
 
-target 'CocoaPodsTestApp' do
-  pod 'SAPCommon', '~> 3.1.200'
-  pod 'SAPFoundation', '~> 3.1.200'
-end
+target 'MyApp' do
+    pod 'SAPCommon', '~> 3.1.300'
+    pod 'SAPFoundation', '~> 3.1.300'
+    pod 'SAPFiori', '~> 3.1.300'
+    pod 'SAPFioriFlows', '~> 3.1.300'
+    pod 'SAPOfflineOData', '~> 3.1.300'
+  end
 ```
 
-### 3rd party dependencies
-If you are using SAPML framework, you have to list the GoogleMobileVision framework in the dependencies.
-E.g. SAPML 3.1.200 depends on GoogleMobileVision 1.3.0:
+## Podfile
+
+The dependency manifest file for a Cocoapods-managed project is a [**Podfile**](https://guides.cocoapods.org/using/the-podfile.html).  
+
+The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects. The file should simply be named `Podfile`, and should be stored in the same directory as the associated `xcodeproj` file(s).
+
+### General Dependencies
+
+Each dependency supported by Cocoapods is called a **Pod**.  To add a pod as a dependency of a Target, write the entry into the `Podfile`.
+
 ```ruby
-target 'CocoaPodsTestApp' do
-  pod 'SAPML', '~> 3.1.200'
-  pod 'GoogleMobileVision', '~> 1.3.0'
+platform :ios, '11.0'
+use_frameworks!
+
+target 'MyApp' do
+  pod 'SwiftConfettiView'
 end
 ```
+### Specifying Dependency Versions
 
-## Prepare authentication for the *SAP Repository Based Shipment Channel*
-Create technical user credentials as described in the [FAQ of SAP Internet Facing Repository Services](https://shipments.pages.repositories.sap.ondemand.com/docs/FAQ.html#how-can-the-sap-client-use-my-software)
+Each Pod should support [semanitic versioning](https://guides.cocoapods.org/using/the-podfile.html#specifying-pod-versions), such that developers may specify a particular version of a dependency, a minimum, maximum, or range.  For pods whose source is available, the version may also be a particular git branch or commit.
 
-Create a .netrc file in the home (~) directory.
-The curl command searches the .netrc file for a machine token that matches the remote machine specified in the URL.
-The .netrc file contains login and initialization information used by the auto-login process.
-### Format
-The following tokens are recognized; they may be separated by spaces, tabs, or new-lines:
-`machine` name: Identify a remote machine name.
-`login` name: Identify a user on the remote machine.
-`password`: Supply a password.
-### Example
-An example .netrc for the host example.com with a user named 'username', using the password 'passw' would look like this:
-```
-machine example.com
-login username
-password passw
-```
+> SAP framework dependencies are distributed as binaries, and thus support only major, minor, patch versioning.  For the **SAP Cloud Platform SDK for iOS**, these equate to:  major = major version, minor = service pack ("SP"), patch = patch level ("PL").  `3.0 SP03 PL01 == 3.3.100`
 
-## Notes
-* Access to this service requires licensed access to SAP Cloud Platform SDK for iOS, e.g. by means of subscribing to SAP Cloud Platform Mobile Services, and a valid S-user for external staff. This service is not available for Trial versions of the SDK.
+### Specifying Dependency Source
+
+Cocoapods maintains a central repository of 'specifications' for each pod (a [**podspec**](https://guides.cocoapods.org/making/specs-and-specs-repo.html)) which is publicly published.  When parsing the Podfile, cocoapods checks the central repository by default, for specs associated with each `pod` listed for the Target.
+
+Since SAP's binaries require authentication for access, their specifications cannot be published to the central repository.  Therefore, this github repo serves as a secondary ***spec repository*** source.
+
+To add pods from the SAP spec repository to your Podfile, you should list this source, either in the header of the Podfile, or in-line with the associated pod(s).
+
+> If you are adding the `/SAP/cloud-sdk-ios-podspecs` source to the Podfile header, cocoapods will not be able to locate pods documented in the central repository, unless you also explicitly add the central repository as a source. 
+> ``` ruby
+> source 'https://github.com/CocoaPods/Specs.git'
+> source 'https://github.com/SAP/cloud-sdk-ios-podspecs'
+> ```
+> Alternatively, list the source in-line:
+> ```ruby
+> target 'MyApp' do
+>     pod 'SAPCommon', '~> 3.1.300', :source => 'https://github.com/SAP/cloud-sdk-ios-podspecs'
+>     pod 'SwiftConfettiView'
+> ```
+
+## Installing and Updating Dependencies
+
+Cocoapods provides the `install` and `update` commands for importing dependencies.  Either will pull new dependencies; `install` does *not* check the spec repository for new versions, while `update` checks the remote spec repositories for new podspec files, before downloading dependencies.
+
+For additional details on using cocoapods, see [the guides](https://guides.cocoapods.org/using/pod-install-vs-update.html).
+
+
 * Quoting the SAP support site, “you can download the SAP products that are associated with your S-user ID. While every visitor can browse the list of software products without any special permissions, downloading files requires the Software Download authorization; to request it, contact a user administrator in your company.” This restriction also applies to the cloud shipment channel.
 
-## Install dependencies
-Use this command to install new pods in your project.
-```shell
-pod install
-```
-After all libraries are installed, a new Xcode workspace file is created, that should be used later for opening the project.
-
-## Update dependencies
-Use this command only when you want to update pods to a newer version.
-```shell
-pod update [PODNAME]
-```
 # Limitations
 
- - SAPML framework is not currently supported as a managed dependency, due to a naming conflict in a dependent framework.
+**This service is not available for Trial versions of the SDK.**
+
+ > Quoting the SAP support site, *“you can download the SAP products that are associated with your S-user ID. While every visitor can browse the list of software products without any special permissions, downloading files requires the Software Download authorization; to request it, contact a user administrator in your company.”* This restriction also applies to the cloud shipment channel.
 
 # Known Issues
 
-None at this time.
+ - SAPML framework is not currently supported as a managed dependency, due to a naming conflict in a dependent framework.
 
 # How to obtain support
 
@@ -146,4 +174,6 @@ If you wish to make a contribution to the repository, please submit a Pull Reque
 
 # License
 
-The content of this repository is licensed under [LICENSE]().  The referenced resources and binaries are licensed under the individual terms of their associated license(s).
+Access to this service requires licensed access to SAP Cloud Platform SDK for iOS, e.g. by means of subscribing to SAP Cloud Platform Mobile Services, and a valid S-user for external staff. 
+
+The resources and binaries referenced in links in the contents of this repository are licensed under the individual terms of their associated license(s).
