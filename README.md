@@ -144,9 +144,6 @@ Cocoapods provides the `install` and `update` commands for importing dependencie
 
 For additional details on using cocoapods, see [the guides](https://guides.cocoapods.org/using/pod-install-vs-update.html).
 
-
-* Quoting the SAP support site, “you can download the SAP products that are associated with your S-user ID. While every visitor can browse the list of software products without any special permissions, downloading files requires the Software Download authorization; to request it, contact a user administrator in your company.” This restriction also applies to the cloud shipment channel.
-
 # Limitations
 
 **This service is not available for Trial versions of the SDK.**
