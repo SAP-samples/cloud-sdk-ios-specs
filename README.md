@@ -1,4 +1,4 @@
-# The SAP iOS SDK CocoaPods Repo
+# The SAP iOS SDK Specs Repo
 
 This repository contains the CocoaPods specifications for frameworks in the SAP Cloud Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the SAP Developer Site.
 
