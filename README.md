@@ -166,11 +166,11 @@ If you wish to make a contribution to the repository, please [submit a Pull Requ
 
 # To-Do (upcoming changes)
 
- - [] Support for Carthage binary distribution
- - [] Support for Cocoapods, for SAPML framemowrk
+ - Support for Carthage binary distribution
+ - Support for Cocoapods, for SAPML framemowrk
 
 # License
 
-Access to this service requires licensed access to SAP Cloud Platform SDK for iOS, e.g. by means of subscribing to SAP Cloud Platform Mobile Services, and a valid S-user for external staff. 
+Copyright (c) 2009-2019 SAP SE or an SAP affiliate company.
 
-The resources and binaries referenced in links in the contents of this repository are licensed under the individual terms of their associated license(s).
+Access to this service requires licensed access to SAP Cloud Platform SDK for iOS, e.g. by means of subscribing to SAP Cloud Platform Mobile Services, and a valid S-user for external staff. 
