@@ -156,13 +156,13 @@ For additional details on using cocoapods, see [the guides](https://guides.cocoa
 
 # How to obtain support
 
-For an issue related to the contents of this repository, please file an Issue here in the github.com project.
+For an issue related to the contents of this repository, please [file an Issue](https://github.com/SAP/cloud-sdk-ios-specs/issues).
 
 For issues related to any of the referenced resources and binaries, please file a support ticket to SAP through the regular channels.
 
 # Contributing
 
-If you wish to make a contribution to the repository, please submit a Pull Request.  It will be reviewed by the maintainers, however, we cannot commit to merging all contributions.
+If you wish to make a contribution to the repository, please [submit a Pull Request](https://github.com/SAP/cloud-sdk-ios-specs/pulls).  It will be reviewed by the maintainers, however, we cannot commit to merging all contributions.
 
 # To-Do (upcoming changes)
 
