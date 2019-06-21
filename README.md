@@ -171,4 +171,4 @@ If you wish to make a contribution to the repository, please [submit a Pull Requ
 
 # License
 
-Copyright (c) 2009-2019 SAP SE or an SAP affiliate company. See [LICENSE](https://raw.githubusercontent.com/SAP/cloud-sdk-ios-specs/master/LICENSE?token=AAC4EPBF7USSVNCUXM2XJCC47LRT4) file.
+Copyright (c) 2009-2019 SAP SE or an SAP affiliate company. See [LICENSE](https://github.com/SAP/cloud-sdk-ios-specs/blob/master/LICENSE) file.
