@@ -6,7 +6,7 @@ This repository contains the CocoaPods specifications for frameworks in the SAP 
 
 1. Ruby
 2. Cocoapods dependency manager
-3. Technical user & password, for [repositories.sap.ondemand.com](https://shipments.pages.repositories.sap.ondemand.com/docs/shipment-sap-client.html#repository-based-shipment-channel-technical-users-management-ui)
+3. Technical user & password, for [repositories.sap.ondemand.com](https://repositories.sap.ondemand.com/nexus3/)
 4. Apple Xcode IDE
 
 # Download and Installation
