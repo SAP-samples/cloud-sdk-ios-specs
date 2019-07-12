@@ -68,7 +68,7 @@ The **netrc** credential technique is a stand **cURL** API.  For complete docume
 
 ## Supported SAP Binary Dependencies (pods)
 
-Specs for the following pods are registered in the repository source:  `https://github.com/SAP/cloud-sdk-ios-podspecs`.
+Specs for the following pods are registered in the repository source:  `https://github.com/SAP-samples/cloud-sdk-ios-specs`.
 
  - `SAPFoundation`
  - `SAPCommon`
