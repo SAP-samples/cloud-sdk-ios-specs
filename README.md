@@ -86,11 +86,11 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'MyApp' do
-    pod 'SAPCommon', '~> 3.1.300'
-    pod 'SAPFoundation', '~> 3.1.300'
-    pod 'SAPFiori', '~> 3.1.300'
-    pod 'SAPFioriFlows', '~> 3.1.300'
-    pod 'SAPOfflineOData', '~> 3.1.300'
+    pod 'SAPCommon', '~> 3.1.3'
+    pod 'SAPFoundation', '~> 3.1.3'
+    pod 'SAPFiori', '~> 3.1.3'
+    pod 'SAPFioriFlows', '~> 3.1.3'
+    pod 'SAPOfflineOData', '~> 3.1.3'
   end
 ```
 
@@ -116,7 +116,7 @@ end
 
 Each Pod should support [semanitic versioning](https://guides.cocoapods.org/using/the-podfile.html#specifying-pod-versions), such that developers may specify a particular version of a dependency, a minimum, maximum, or range.  For pods whose source is available, the version may also be a particular git branch or commit.
 
-> SAP framework dependencies are distributed as binaries, and thus support only major, minor, patch versioning.  For the **SAP Cloud Platform SDK for iOS**, these equate to:  major = major version, minor = service pack ("SP"), patch = patch level ("PL").  `3.0 SP03 PL01 == 3.3.100`
+> SAP framework dependencies are distributed as binaries, and thus support only major, minor, patch versioning.  For the **SAP Cloud Platform SDK for iOS**, these equate to:  major = major version, minor = service pack ("SP"), patch = patch level ("PL").  `3.0 SP01 PL03 == 3.1.3`
 
 ### Specifying Dependency Source
 
