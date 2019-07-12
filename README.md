@@ -80,7 +80,7 @@ Specs for the following pods are registered in the repository source:  `https://
  ### Example Podfile with SAP Dependencies
 
  ```ruby
-source 'https://github.com/SAP/cloud-sdk-ios-podspecs'
+source 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 
 platform :ios, '11.0'
 use_frameworks!
@@ -126,15 +126,15 @@ Since SAP's binaries require authentication for access, their specifications can
 
 To add pods from the SAP spec repository to your Podfile, you should list this source, either in the header of the Podfile, or in-line with the associated pod(s).
 
-> If you are adding the `/SAP/cloud-sdk-ios-podspecs` source to the Podfile header, cocoapods will not be able to locate pods documented in the central repository, unless you also explicitly add the central repository as a source. 
+> If you are adding the `/SAP-samples/cloud-sdk-ios-specs` source to the Podfile header, cocoapods will not be able to locate pods documented in the central repository, unless you also explicitly add the central repository as a source. 
 > ``` ruby
 > source 'https://github.com/CocoaPods/Specs.git'
-> source 'https://github.com/SAP/cloud-sdk-ios-podspecs'
+> source 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 > ```
 > Alternatively, list the source in-line:
 > ```ruby
 > target 'MyApp' do
->     pod 'SAPCommon', '~> 3.1.300', :source => 'https://github.com/SAP/cloud-sdk-ios-podspecs'
+>     pod 'SAPCommon', '~> 3.1.300', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 >     pod 'SwiftConfettiView'
 > ```
 
