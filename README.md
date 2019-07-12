@@ -134,7 +134,7 @@ To add pods from the SAP spec repository to your Podfile, you should list this s
 > Alternatively, list the source in-line:
 > ```ruby
 > target 'MyApp' do
->     pod 'SAPCommon', '~> 3.1.300', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
+>     pod 'SAPCommon', '~> 3.1.3', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 >     pod 'SwiftConfettiView'
 > ```
 
