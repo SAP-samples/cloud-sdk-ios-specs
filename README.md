@@ -114,7 +114,7 @@ end
 ```
 ### Specifying Dependency Versions
 
-Each Pod should support [semanitic versioning](https://guides.cocoapods.org/using/the-podfile.html#specifying-pod-versions), such that developers may specify a particular version of a dependency, a minimum, maximum, or range.  For pods whose source is available, the version may also be a particular git branch or commit.
+Each Pod should support [semantic versioning](https://guides.cocoapods.org/using/the-podfile.html#specifying-pod-versions), such that developers may specify a particular version of a dependency, a minimum, maximum, or range.  For pods whose source is available, the version may also be a particular git branch or commit.
 
 > SAP framework dependencies are distributed as binaries, and thus support only major, minor, patch versioning.  For the **SAP Cloud Platform SDK for iOS**, these equate to:  major = major version, minor = service pack ("SP"), patch = patch level ("PL").  `3.0 SP01 PL03 == 3.1.3`
 
