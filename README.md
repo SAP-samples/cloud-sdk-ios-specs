@@ -36,7 +36,7 @@ $ sudo gem install cocoapods
 
 Xcode may be installed via the Mac App Store, or, specific versions may be downloaded at [developer.apple.com/download](https://developer.apple.com/download/).
 
-The current version of Xcode which is supported by the latest SAP binaries is Xcode 10.2.x.
+The current version of Xcode which is supported by the latest SAP binaries is Xcode 11.
 
 # Configuration
 
