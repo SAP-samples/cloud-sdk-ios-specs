@@ -86,11 +86,11 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'MyApp' do
-   pod 'SAPCommon', '3.2.6'
-   pod 'SAPFoundation', '3.2.6'
-   pod 'SAPFiori', '3.2.6'
-   pod 'SAPFioriFlows', '3.2.6'
-   pod 'SAPOfflineOData', '3.2.6'
+   pod 'SAPCommon', '~> 4.0'
+   pod 'SAPFoundation', '~> 4.0'
+   pod 'SAPFiori', '~> 4.0'
+   pod 'SAPFioriFlows', '~> 4.0'
+   pod 'SAPOfflineOData', '~> 4.0'
  end
 ```
 
@@ -134,7 +134,7 @@ To add pods from the SAP spec repository to your Podfile, you should list this s
 > Alternatively, list the source in-line:
 > ```ruby
 > target 'MyApp' do
->     pod 'SAPCommon', '~> 3.1.3', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
+>     pod 'SAPCommon', '~> 4.0', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 >     pod 'SwiftConfettiView'
 > ```
 
