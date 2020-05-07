@@ -8,6 +8,7 @@ This repository contains the CocoaPods specifications for frameworks in the SAP 
 2. Cocoapods dependency manager
 3. Technical user & password, for [repositories.sap.ondemand.com](https://repositories.sap.ondemand.com/nexus3/)
 4. Apple Xcode IDE
+5. For SDK version >=5 on Mac Catalyst, script `codesign.py` from SAP Cloud Platform SDK for iOS Assistant
 
 # Download and Installation
 
@@ -144,6 +145,14 @@ Cocoapods provides the `install` and `update` commands for importing dependencie
 
 For additional details on using cocoapods, see [the guides](https://guides.cocoapods.org/using/pod-install-vs-update.html).
 
+## Installing Codesigning Script for Catalyst
+
+Version 5.0.x of the SDK introduces the **.xcframework** artifact type, replacing .framework. There is no effect in switching from framework to xcframework on iOS platform, but Mac Catalyst introduces a new **Hardened Runtime** feature, which requires binaries to be commonly signed.  A python script is available in the SAP Cloud Platform SDK for iOS to facilitate this signing.  The simplest configuration is to `mkdir scripts` in the root of your project directory, and export the script there.
+
+To install it to an application configured with Cocoapods, add a **Run Script** Build Phase to your target, *after* the **[CP] Prepare Artifacts** phase.  
+
+For more info, see [blog](https://blogs.sap.com/2020/03/20/introducing-mac-catalyst-support-for-sap-cloud-platform-sdk-for-ios/).
+
 # Limitations
 
 **This service is not available for Trial versions of the SDK.**
@@ -152,7 +161,7 @@ For additional details on using cocoapods, see [the guides](https://guides.cocoa
 
 # Known Issues
 
- - SAPML framework is not currently supported as a managed dependency, due to a naming conflict in a dependent framework.
+ - SAPML framework is not currently supported as a managed dependency.
 
 # How to obtain support
 
