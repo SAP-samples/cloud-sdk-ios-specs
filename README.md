@@ -82,16 +82,16 @@ Specs for the following pods are registered in the repository source:  `https://
  ```ruby
 source 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 
-platform :ios, '12.0'
+platform :ios, '13.0'
 use_frameworks!
 
 target 'MyApp' do
-   pod 'SAPCommon', '~> 4.0'
-   pod 'SAPFoundation', '~> 4.0'
-   pod 'SAPFiori', '~> 4.0'
-   pod 'SAPFioriFlows', '~> 4.0'
-   pod 'SAPOfflineOData', '~> 4.0'
- end
+   pod 'SAPCommon', '~> 5.0'
+   pod 'SAPFoundation', '~> 5.0'
+   pod 'SAPFiori', '~> 5.0'
+   pod 'SAPFioriFlows', '~> 5.0'
+   pod 'SAPOfflineOData', '~> 5.0'
+end
 ```
 
 ## Podfile
@@ -134,7 +134,7 @@ To add pods from the SAP spec repository to your Podfile, you should list this s
 > Alternatively, list the source in-line:
 > ```ruby
 > target 'MyApp' do
->     pod 'SAPCommon', '~> 4.0', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
+>     pod 'SAPCommon', '~> 5.0', :source => 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 >     pod 'SwiftConfettiView'
 > ```
 
@@ -171,5 +171,5 @@ If you wish to make a contribution to the repository, please [submit a Pull Requ
 
 # License
 
-Copyright (c) 2009-2019 SAP SE or an SAP affiliate company. See [LICENSE](https://github.com/SAP/cloud-sdk-ios-specs/blob/master/LICENSE) file.
+Copyright (c) 2009-2020 SAP SE or an SAP affiliate company. See [LICENSE](https://github.com/SAP/cloud-sdk-ios-specs/blob/master/LICENSE) file.
  
