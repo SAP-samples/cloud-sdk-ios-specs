@@ -149,7 +149,11 @@ For additional details on using cocoapods, see [the guides](https://guides.cocoa
 
 Version 5.0.x of the SDK introduces the **.xcframework** artifact type, replacing .framework. There is no effect in switching from framework to xcframework on iOS platform, but Mac Catalyst introduces a new **Hardened Runtime** feature, which requires binaries to be commonly signed.  A python script is available in the SAP Cloud Platform SDK for iOS to facilitate this signing.  The simplest configuration is to `mkdir scripts` in the root of your project directory, and export the script there.
 
+<img src="https://github.com/SAP-samples/cloud-sdk-ios-specs/blob/resources/gif/ExportScript.png?raw=true" width="375"/>
+
 To install it to an application configured with Cocoapods, add a **Run Script** Build Phase to your target, *after* the **[CP] Prepare Artifacts** phase.  
+
+![](https://github.com/SAP-samples/cloud-sdk-ios-specs/blob/resources/gif/RunScript_BuildPhase.png?raw=true)
 
 For more info, see [blog](https://blogs.sap.com/2020/03/20/introducing-mac-catalyst-support-for-sap-cloud-platform-sdk-for-ios/).
 
