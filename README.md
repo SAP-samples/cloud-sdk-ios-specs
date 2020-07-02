@@ -1,3 +1,5 @@
+***NOTICE:  Nexus repository migration will take place Saturday, 4th of July. The scheduled time for the migration activities is 09:00 – 13:00 CET. During this time you might experience intermittent failures with Nexus service endpoints referenced in the specs.*** 
+
 # The SAP iOS SDK Specs Repo
 
 This repository contains the CocoaPods specifications for frameworks in the SAP Cloud Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the [SAP Developer Site](https://developers.sap.com/topics/cloud-platform-sdk-for-ios.html).
