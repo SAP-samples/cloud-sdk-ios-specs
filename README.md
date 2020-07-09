@@ -1,4 +1,4 @@
-***NOTICE:  We are currently experiencing access issues due to the Nexus repository migration from the weekend.  A resolution is in-process.*** 
+***IMPORTANT:  Due to a repository migration 7/2020, your netrc `machine` should be updated to `rbsc.repositories.sap.ondemand.com`.  You will likely expereience authentication failure without making this change.*** 
 
 # The SAP iOS SDK Specs Repo
 
@@ -64,6 +64,8 @@ machine rbsc.repositories.sap.ondemand.com
     login sap-xxxxxx 
     password xxxxxxxxxxxxxxxxxx
 ```
+
+> The `machine` name was updated 7/2020 to `rbsc.repositories.sap.ondemand.com`.  Existing netrc entries should be updated accordingly.  The existing technical user credentials *should* remain valid.  If not, please re-generate and update in the netrc file.
 
 The **netrc** credential technique is a stand **cURL** API.  For complete documentation, see [gnu.org](https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html).
 
