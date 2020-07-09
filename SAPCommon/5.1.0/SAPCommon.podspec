@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP Cloud Platform SDK for iOS - SAPCommon Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => "https://https://73554900100900004651.mavensrv.repositories.sapcdn.io/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/#{spec.name}/#{spec.version}/#{spec.name}-#{spec.version}-Release-xcframework.zip" }
+    spec.source               = { :http => "https://73554900100900004651.mavensrv.repositories.sapcdn.io/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/#{spec.name}/#{spec.version}/#{spec.name}-#{spec.version}-Release-xcframework.zip" }
     spec.vendored_frameworks  = "#{spec.name}.xcframework"
     spec.framework            = "#{spec.name}"
     
