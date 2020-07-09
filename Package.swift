@@ -20,6 +20,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
 
 //        .binaryTarget(name: "SAPCommon", path: "/Applications/SAP\ Cloud\ Platform\ SDK\ for\ iOS\ Assistant.app/Contents/Resources/iOSFrameworks/Release-xcframework/SAPCommon.xcframework"),
-        .binaryTarget(name: "SAPCommon", url: "https://repositories.sap.ondemand.com/nexus3/repository/maven73554900100900004651/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPCommon/5.0.5/SAPCommon-5.0.5-Release-xcframework.zip", checksum: "9cd06f8ab24b610285a4ae0d35c971e3ae08b624aa79a646d8f780ce3e03e79b"),
+        .binaryTarget(name: "SAPCommon", url: "https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900004651/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPCommon/5.1.0/SAPCommon-5.1.0-Release-xcframework.zip", checksum: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
     ]
 )
