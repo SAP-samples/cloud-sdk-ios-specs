@@ -1,4 +1,4 @@
-***IMPORTANT:  Due to a repository migration 7/2020, your netrc `machine` should be updated to `rbsc.repositories.sap.ondemand.com`.  You will likely expereience authentication failure without making this change.*** 
+***IMPORTANT:  Due to a repository migration 7/2020, your netrc `machine` should be updated to `rbsc.repositories.sap.ondemand.com`.  You will likely experience authentication failure without making this change.*** 
 
 # The SAP iOS SDK Specs Repo
 
