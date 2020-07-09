@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP Cloud Platform SDK for iOS - SAPFoundation Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://repositories.sap.ondemand.com/nexus3/repository/maven73555000100900003122/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/4.0.11/SAPFoundation-4.0.11-Release-fat.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73555000100900003122/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/4.0.11/SAPFoundation-4.0.11-Release-fat.zip' }
     spec.vendored_frameworks  = 'SAPFoundation.framework'
     spec.framework            = 'SAPFoundation'
     spec.dependency  'SAPCommon', '4.0.11'

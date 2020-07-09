@@ -8,7 +8,7 @@ This repository contains the CocoaPods specifications for frameworks in the SAP 
 
 1. Ruby
 2. Cocoapods dependency manager
-3. Technical user & password, for [repositories.sap.ondemand.com](https://repositories.sap.ondemand.com/nexus3/)
+3. Technical user & password, for [repositories.sap.ondemand.com](https://rbsc.repositories.sap.ondemand.com/nexus3/)
 4. Apple Xcode IDE
 5. For SDK version >=5 on Mac Catalyst, script `codesign.py` from SAP Cloud Platform SDK for iOS Assistant
 
@@ -45,7 +45,7 @@ The current version of Xcode which is supported by the latest SAP binaries is Xc
 
 ## Obtaining Technical user & password
 
-The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running `pod update`, you must visit the [Technical Users' UI Home Page](https://repositories.sap.ondemand.com/ui) to obtain a technical username/password.  
+The SDK binaries are hosted in SAP's Internet-facing repository, which requires authenticated access. Before running `pod update`, you must visit the [Technical Users' UI Home Page](https://ui.repositories.cloud.sap/www/webapp/) to obtain a technical username/password.  
 
  > SAP Customers & Partners:  use your **S-User** credentials
 
@@ -60,7 +60,7 @@ Open, or create a new file at `~/.netrc`.
 Add an entry which includes the username password credential pair, as follows:
 
 ```
-machine repositories.sap.ondemand.com 
+machine rbsc.repositories.sap.ondemand.com 
     login sap-xxxxxx 
     password xxxxxxxxxxxxxxxxxx
 ```
