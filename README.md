@@ -1,4 +1,4 @@
-***NOTICE:  Nexus repository migration will take place Saturday, 4th of July. The scheduled time for the migration activities is 09:00 – 13:00 CET. During this time you might experience intermittent failures with Nexus service endpoints referenced in the specs.*** 
+***NOTICE:  We are currently experiencing access issues due to the Nexus repository migration from the weekend.  A resolution is in-process.*** 
 
 # The SAP iOS SDK Specs Repo
 
