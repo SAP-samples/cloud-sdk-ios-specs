@@ -81,6 +81,7 @@ Specs for the following pods are registered in the repository source:  `https://
  - `SAPFioriFlows`
  - `SAPOData`
  - `SAPOfflineOData`
+ - `SAPML`
 
  ### Example Podfile with SAP Dependencies
 
@@ -91,11 +92,12 @@ platform :ios, '13.0'
 use_frameworks!
 
 target 'MyApp' do
-   pod 'SAPCommon', '~> 5.0'
-   pod 'SAPFoundation', '~> 5.0'
-   pod 'SAPFiori', '~> 5.0'
-   pod 'SAPFioriFlows', '~> 5.0'
-   pod 'SAPOfflineOData', '~> 5.0'
+   pod 'SAPCommon', '~> 5.1'
+   pod 'SAPFoundation', '~> 5.1'
+   pod 'SAPFiori', '~> 5.1'
+   pod 'SAPFioriFlows', '~> 5.1'
+   pod 'SAPOfflineOData', '~> 5.1'
+   pod 'SAPML', '~> 5.1'
 end
 ```
 
@@ -169,7 +171,7 @@ For more info, see [blog](https://blogs.sap.com/2020/03/20/introducing-mac-catal
 
 # Known Issues
 
- - SAPML framework is not currently supported as a managed dependency.
+None.
 
 # How to obtain support
 
@@ -184,7 +186,6 @@ If you wish to make a contribution to the repository, please [submit a Pull Requ
 # To-Do (upcoming changes)
 
  - Support for Carthage binary distribution
- - Support for Cocoapods, for SAPML framemowrk
 
 # License
 
