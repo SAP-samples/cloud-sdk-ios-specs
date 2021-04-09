@@ -91,7 +91,7 @@ source 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 platform :ios, '14.0'
 use_frameworks!
 
-target 'PodTest' do
+target 'MyApp' do
   pod 'SAPCommon', '~> 6.0'
   pod 'SAPFoundation', '~> 6.0'
   pod 'SAPFiori', '~> 6.0'
