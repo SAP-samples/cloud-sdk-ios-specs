@@ -88,16 +88,16 @@ Specs for the following pods are registered in the repository source:  `https://
  ```ruby
 source 'https://github.com/SAP-samples/cloud-sdk-ios-specs'
 
-platform :ios, '13.0'
+platform :ios, '14.0'
 use_frameworks!
 
-target 'MyApp' do
-   pod 'SAPCommon', '~> 5.1'
-   pod 'SAPFoundation', '~> 5.1'
-   pod 'SAPFiori', '~> 5.1'
-   pod 'SAPFioriFlows', '~> 5.1'
-   pod 'SAPOfflineOData', '~> 5.1'
-   pod 'SAPML', '~> 5.1'
+target 'PodTest' do
+  pod 'SAPCommon', '~> 6.0'
+  pod 'SAPFoundation', '~> 6.0'
+  pod 'SAPFiori', '~> 6.0'
+  pod 'SAPFioriFlows', '~> 6.0'
+  pod 'SAPOfflineOData', '~> 6.0'
+  pod 'SAPML', '~> 6.0'
 end
 ```
 
