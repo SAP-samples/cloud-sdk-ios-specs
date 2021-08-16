@@ -4,7 +4,7 @@
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-sdk-ios-specs)](https://api.reuse.software/info/github.com/SAP-samples/cloud-sdk-ios-specs)
 
-This repository contains the CocoaPods specifications for frameworks in the SAP Cloud Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the [SAP Developer Site](https://developers.sap.com/topics/cloud-platform-sdk-for-ios.html).
+This repository contains the CocoaPods specifications for frameworks in the SAP Business Technology Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the [SAP Developer Site](https://developers.sap.com/topics/sap-btp-sdk-for-ios.html).
 
 # Requirements
 
@@ -12,7 +12,7 @@ This repository contains the CocoaPods specifications for frameworks in the SAP 
 2. Cocoapods dependency manager
 3. Technical user & password, for [repositories.sap.ondemand.com](https://rbsc.repositories.sap.ondemand.com/nexus3/)
 4. Apple Xcode IDE
-5. For SDK version >=5 on Mac Catalyst, script `codesign.py` from SAP Cloud Platform SDK for iOS Assistant
+5. For SDK version >=5 on Mac Catalyst, script `codesign.py` from SAP BTP SDK for iOS Assistant
 
 # Download and Installation
 
@@ -125,7 +125,7 @@ end
 
 Each Pod should support [semantic versioning](https://guides.cocoapods.org/using/the-podfile.html#specifying-pod-versions), such that developers may specify a particular version of a dependency, a minimum, maximum, or range.  For pods whose source is available, the version may also be a particular git branch or commit.
 
-> SAP framework dependencies are distributed as binaries, and thus support only major, minor, patch versioning.  For the **SAP Cloud Platform SDK for iOS**, these equate to:  major = major version, minor = service pack ("SP"), patch = patch level ("PL").  `3.0 SP01 PL03 == 3.1.3`
+> SAP framework dependencies are distributed as binaries, and thus support only major, minor, patch versioning.  For the **SAP BTP SDK for iOS**, these equate to:  major = major version, minor = service pack ("SP"), patch = patch level ("PL").  `3.0 SP01 PL03 == 3.1.3`
 
 ### Specifying Dependency Source
 
@@ -155,7 +155,7 @@ For additional details on using cocoapods, see [the guides](https://guides.cocoa
 
 ## Installing Codesigning Script for Catalyst
 
-Version 5.0.x of the SDK introduces the **.xcframework** artifact type, replacing .framework. There is no effect in switching from framework to xcframework on iOS platform, but Mac Catalyst introduces a new **Hardened Runtime** feature, which requires binaries to be commonly signed.  A python script is available in the SAP Cloud Platform SDK for iOS to facilitate this signing.  The simplest configuration is to `mkdir scripts` in the root of your project directory, and export the script there.
+Version 5.0.x of the SDK introduces the **.xcframework** artifact type, replacing .framework. There is no effect in switching from framework to xcframework on iOS platform, but Mac Catalyst introduces a new **Hardened Runtime** feature, which requires binaries to be commonly signed.  A python script is available in the SAP BTP SDK for iOS to facilitate this signing.  The simplest configuration is to `mkdir scripts` in the root of your project directory, and export the script there.
 
 <img src="https://github.com/SAP-samples/cloud-sdk-ios-specs/blob/resources/gif/ExportScript.png?raw=true" width="375"/>
 
