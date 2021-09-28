@@ -1,0 +1,20 @@
+name: TestApp
+
+options:
+  minimumXcodeGenVersion: 2.10
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  deploymentTarget:
+    iOS: "14.0"
+
+targets:
+
+  TestApp:
+    name: TestApp
+    type: application
+    platform: [iOS]
+
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: "com.sap.samples.cloud.sdk.ios.specs.TestApp"
+
+    sources: [TestApp]

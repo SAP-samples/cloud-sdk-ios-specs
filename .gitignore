@@ -1,1 +1,5 @@
 *.zip
+.testing/Pods
+.testing/Podfile.lock
+.testing/*.xcodeproj
+.testing/*.xcworkspace

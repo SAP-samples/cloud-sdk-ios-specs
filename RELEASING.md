@@ -25,3 +25,5 @@ To download the zip files (for verification; **requires netrc**)
 ```bash
 make download_zips VERSION=6.1.0
 ```
+
+To test podspecs you can adjust `Podfile` in `.testing` folder and generate a project using those specs. See [here](./.testing/README.md) for more details
