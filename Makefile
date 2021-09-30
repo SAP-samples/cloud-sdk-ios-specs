@@ -15,10 +15,10 @@ replace_in_specs: # e.g. make replace_in_specs OLD=13.0 NEW=14.0 IN_VERSION=6.1.
 	sed -i '' 's/$(OLD)/$(NEW)/' SAPOData/$(IN_VERSION)/SAPOData.podspec
 	sed -i '' 's/$(OLD)/$(NEW)/' SAPOfflineOData/$(IN_VERSION)/SAPOfflineOData.podspec
 download_zips: # e.g. make download_zips VERSION=6.1.0
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPCommon/$(VERSION)/SAPCommon-$(VERSION)-Release-xcframework.zip -netrc
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/$(VERSION)/SAPFoundation-$(VERSION)-Release-xcframework.zip -netrc
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/uireuse/SAPFiori/$(VERSION)/SAPFiori-$(VERSION)-Release-xcframework.zip -netrc
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/flows/SAPFioriFlows/$(VERSION)/SAPFioriFlows-$(VERSION)-Release-xcframework.zip -netrc
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/uireuse/SAPML/$(VERSION)/SAPML-$(VERSION)-Release-xcframework.zip -netrc
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPOData/$(VERSION)/SAPOData-$(VERSION)-Release-xcframework.zip -netrc
-	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPOfflineOData/$(VERSION)/SAPOfflineOData-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPCommon/$(VERSION)/SAPCommon-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/$(VERSION)/SAPFoundation-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/uireuse/SAPFiori/$(VERSION)/SAPFiori-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/flows/SAPFioriFlows/$(VERSION)/SAPFioriFlows-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/uireuse/SAPML/$(VERSION)/SAPML-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPOData/$(VERSION)/SAPOData-$(VERSION)-Release-xcframework.zip -netrc
+	curl -LO https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPOfflineOData/$(VERSION)/SAPOfflineOData-$(VERSION)-Release-xcframework.zip -netrc
