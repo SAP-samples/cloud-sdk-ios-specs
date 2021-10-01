@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      frameworkVersion:
+        description: 'Framework Version'     
+        required: true
+        default: '6.1.4'
+
+jobs:
+  verify-podspec-install:
+    runs-on: macos-11
+    strategy:
+      fail-fast: false
+      matrix:
+        xcode: ['Xcode_12.5']
+        experimental: [false]
+        include:
+          - xcode: 'Xcode_13.0'
+            experimental: true
+    continue-on-error: ${{ matrix.experimental }}        
+    env:
+      DEVELOPER_DIR: /Applications/${{ matrix.xcode }}.app/Contents/Developer
+      
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create .netrc file with credentials to download binaries from SAP RSBC
+      uses: little-core-labs/netrc-creds@master
+      with:
+        machine: rbsc.repositories.sap.ondemand.com
+        login: sap-sdkiospecs
+        password: ${{ secrets.RSBC_USER_BASICAUTH_PWD }}
+    - name: Install required tools
+      run: brew install xcodegen
+    - name: Determine latest podspec versions (base is SAPCommon)
+      id: frameworkVersion
+      if: github.event_name != 'workflow_dispatch'
+      run: |
+        cd SAPCommon
+        lastVersion=`ls -1|sort -r|head -n 1`
+        echo "$lastVersion"
+        echo "::set-output name=latest::$lastVersion"       
+    - name: Create Podfile with latest podspecs
+      if: github.event_name != 'workflow_dispatch'
+      run: |
+        cd .testing
+        rm Podfile
+        echo "platform :ios, '13.0'" >> Podfile
+        echo "use_frameworks!" >> Podfile
+        echo "target 'TestApp' do" >> Podfile
+        echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ steps.frameworkVersion.outputs.latest }}/SAPCommon.podspec'" >> Podfile
+        echo " pod 'SAPFoundation', :podspec => '../SAPFoundation/${{ steps.frameworkVersion.outputs.latest }}/SAPFoundation.podspec'" >> Podfile
+        echo " pod 'SAPFiori', :podspec => '../SAPFiori/${{ steps.frameworkVersion.outputs.latest }}/SAPFiori.podspec'" >> Podfile
+        echo " pod 'SAPFioriFlows', :podspec => '../SAPFioriFlows/${{ steps.frameworkVersion.outputs.latest }}/SAPFioriFlows.podspec'" >> Podfile
+        echo " pod 'SAPOData', :podspec => '../SAPOData/${{ steps.frameworkVersion.outputs.latest }}/SAPOData.podspec'" >> Podfile
+        echo " pod 'SAPOfflineOData', :podspec => '../SAPOfflineOData/${{ steps.frameworkVersion.outputs.latest }}/SAPOfflineOData.podspec'" >> Podfile
+        echo " pod 'SAPML', :podspec => '../SAPML/${{ steps.frameworkVersion.outputs.latest }}/SAPML.podspec'" >> Podfile
+        echo "end" >> Podfile
+        cat Podfile
+    - name: Create Podfile with version specified manually
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        cd .testing
+        rm Podfile
+        echo "platform :ios, '13.0'" >> Podfile
+        echo "use_frameworks!" >> Podfile
+        echo "target 'TestApp' do" >> Podfile
+        echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ github.event.inputs.frameworkVersion }}/SAPCommon.podspec'" >> Podfile
+        echo " pod 'SAPFoundation', :podspec => '../SAPFoundation/${{ github.event.inputs.frameworkVersion }}/SAPFoundation.podspec'" >> Podfile
+        echo " pod 'SAPFiori', :podspec => '../SAPFiori/${{ github.event.inputs.frameworkVersion }}/SAPFiori.podspec'" >> Podfile
+        echo " pod 'SAPFioriFlows', :podspec => '../SAPFioriFlows/${{ github.event.inputs.frameworkVersion }}/SAPFioriFlows.podspec'" >> Podfile
+        echo " pod 'SAPOData', :podspec => '../SAPOData/${{ github.event.inputs.frameworkVersion }}/SAPOData.podspec'" >> Podfile
+        echo " pod 'SAPOfflineOData', :podspec => '../SAPOfflineOData/${{ github.event.inputs.frameworkVersion }}/SAPOfflineOData.podspec'" >> Podfile
+        echo " pod 'SAPML', :podspec => '../SAPML/${{ github.event.inputs.frameworkVersion }}/SAPML.podspec'" >> Podfile
+        echo "end" >> Podfile
+        cat Podfile           
+    - name: Create test application
+      run: |
+        cd .testing
+        xcodegen generate
+        echo ${{ steps.sapcommon.outputs.lastVersion }}
+    - name: Install pods for test application
+      run: |
+        cd .testing
+        pod install
+    - name: Build test application (which uses the frameworks)
+      run: |
+        cd .testing
+        xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11' clean build
