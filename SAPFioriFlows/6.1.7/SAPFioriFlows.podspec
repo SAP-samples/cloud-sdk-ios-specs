@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPFioriFlows Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/flows/SAPFioriFlows/6.1.7/SAPFioriFlows-6.1.7-Release-xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73554900100900005307/com/sap/mobile/platform/client/hcp/sdk/ios/flows/SAPFioriFlows/6.1.7/SAPFioriFlows-6.1.7-Release-xcframework.zip' }
     spec.vendored_frameworks  = 'SAPFioriFlows.xcframework'
     spec.framework            = 'SAPFioriFlows'
     spec.dependency  'SAPCommon', '6.1.7'
