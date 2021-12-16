@@ -187,9 +187,11 @@ If you wish to make a contribution to the repository, please [submit a Pull Requ
 
 # To-Do (upcoming changes)
 
- - Support for Carthage binary distribution
+Support for Carthage binary distribution
 
 # License
 
-Copyright (c) 2009-2020 SAP SE or an SAP affiliate company. See [LICENSE](https://github.com/SAP/cloud-sdk-ios-specs/blob/master/LICENSE) file.
- 
+Copyright (c) 2009-2020 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+
+
+
