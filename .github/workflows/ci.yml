@@ -49,7 +49,7 @@ jobs:
       run: |
         cd .testing
         rm Podfile
-        echo "platform :ios, '13.0'" >> Podfile
+        echo "platform :ios, '14.0'" >> Podfile
         echo "use_frameworks!" >> Podfile
         echo "target 'TestApp' do" >> Podfile
         echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ steps.frameworkVersion.outputs.latest }}/SAPCommon.podspec'" >> Podfile
