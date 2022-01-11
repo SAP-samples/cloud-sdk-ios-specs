@@ -1,3 +1,4 @@
+# Workflow supports podspec verification for iOS SDK 6.1.x (iOS 13) and iOS SDK 7.x (iOS 14)
 name: CI
 
 on:
@@ -10,6 +11,10 @@ on:
         description: 'Framework Version'     
         required: true
         default: '6.1.4'
+      iOSVersion:
+        description: 'iOS Version'
+        required: true
+        default: '14.0'
 
 jobs:
   verify-podspec-install:
@@ -44,12 +49,19 @@ jobs:
         lastVersion=`ls -1|sort -r|head -n 1`
         echo "$lastVersion"
         echo "::set-output name=latest::$lastVersion"       
+    - name: Determine iOSVersion
+      id: iOSVersion
+      if: github.event_name != 'workflow_dispatch'
+      run: |
+        iOSVersion=$(if [[ ${{steps.frameworkVersion.outputs.latest}} = 7* ]]; then echo '14.0'; else echo '13.0'; fi)
+        echo "$iOSVersion"
+        echo "::set-output name=iOSVersion::$iOSVersion"
     - name: Create Podfile with latest podspecs
       if: github.event_name != 'workflow_dispatch'
       run: |
         cd .testing
         rm Podfile
-        echo "platform :ios, '14.0'" >> Podfile
+        echo "platform :ios, '${{ steps.iOSVersion.outputs.iOSVersion }}'" >> Podfile
         echo "use_frameworks!" >> Podfile
         echo "target 'TestApp' do" >> Podfile
         echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ steps.frameworkVersion.outputs.latest }}/SAPCommon.podspec'" >> Podfile
@@ -66,7 +78,7 @@ jobs:
       run: |
         cd .testing
         rm Podfile
-        echo "platform :ios, '13.0'" >> Podfile
+        echo "platform :ios, '${{ github.event.inputs.iOSVersion }}'" >> Podfile
         echo "use_frameworks!" >> Podfile
         echo "target 'TestApp' do" >> Podfile
         echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ github.event.inputs.frameworkVersion }}/SAPCommon.podspec'" >> Podfile
