@@ -46,7 +46,7 @@ jobs:
       if: github.event_name != 'workflow_dispatch'
       run: |
         cd SAPCommon
-        lastVersion=`ls -1|sort -r|head -n 1`
+        lastVersion=`ls -lrt | tail -1 | awk '{print $9}'`
         echo "$lastVersion"
         echo "::set-output name=latest::$lastVersion"       
     - name: Determine iOSVersion
