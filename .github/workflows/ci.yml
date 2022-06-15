@@ -41,14 +41,22 @@ jobs:
         password: ${{ secrets.RSBC_USER_BASICAUTH_PWD }}
     - name: Install required tools
       run: brew install xcodegen
-    - name: Determine latest podspec versions (base is SAPCommon)
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v20.2
+      if: github.event_name != 'workflow_dispatch'
+    - name: Determine relevant podspec versions (based on changed files)
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        cd SAPCommon
-        lastVersion=`ls -1|sort -r|head -n 1`
-        echo "$lastVersion"
-        echo "::set-output name=latest::$lastVersion"       
+        relevantVersion=7.0.5 # safeguard in case no podspec file(s) were changed
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          lastVersion=`echo ${file} | cut -d / -f 2`
+          [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
+          echo "File checked: ${file}."
+        done
+        echo ${relevantVersion}
+        echo "::set-output name=latest::$relevantVersion"
     - name: Determine iOSVersion
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
