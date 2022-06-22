@@ -61,7 +61,7 @@ jobs:
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        iOSVersion=$(if [[ ${{steps.frameworkVersion.outputs.latest}} = 7* ]]; then echo '14.0'; else echo '13.0'; fi)
+        iOSVersion=$(if [[ ${{steps.frameworkVersion.outputs.latest}} = 7* || ${{steps.frameworkVersion.outputs.latest}} = 8* ]]; then echo '14.0'; else echo '13.0'; fi)
         echo "$iOSVersion"
         echo "::set-output name=iOSVersion::$iOSVersion"
     - name: Create Podfile with latest podspecs
