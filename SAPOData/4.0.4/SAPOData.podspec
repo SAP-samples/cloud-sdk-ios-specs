@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP Cloud Platform SDK for iOS - SAPOData Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73555000100900003122/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPOData/4.0.4/SAPOData-4.0.4-Release-fat.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900003122/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPOData/4.0.4/SAPOData-4.0.4-Release-fat.zip' }
     spec.vendored_frameworks  = 'SAPOData.framework'
     spec.framework            = 'SAPOData'
     spec.dependency  'SAPCommon', '4.0.4'
