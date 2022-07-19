@@ -1,4 +1,4 @@
-***IMPORTANT:  Due to a repository migration 7/2020, your netrc `machine` should be updated to `rbsc.repositories.sap.ondemand.com`.  You will likely experience authentication failure without making this change.*** 
+***IMPORTANT:  Due to a repository migration 7/2022, your netrc `machine` should be updated to `rbsc.repositories.cloud.sap`.  You will likely experience authentication failure without making this change.*** 
 
 # The SAP iOS SDK Specs Repo
 
@@ -10,7 +10,7 @@ This repository contains the CocoaPods specifications for frameworks in the SAP 
 
 1. Ruby
 2. Cocoapods dependency manager
-3. Technical user & password, for [repositories.sap.ondemand.com](https://rbsc.repositories.sap.ondemand.com/nexus3/)
+3. Technical user & password, for [repositories.cloud.sap](https://rbsc.repositories.cloud.sap/nexus3/)
 4. Apple Xcode IDE
 5. For SDK version >=5 on Mac Catalyst, script `codesign.py` from SAP BTP SDK for iOS Assistant
 
@@ -62,12 +62,12 @@ Open, or create a new file at `~/.netrc`.
 Add an entry which includes the username password credential pair, as follows:
 
 ```
-machine rbsc.repositories.sap.ondemand.com 
+machine rbsc.repositories.cloud.sap 
     login sap-xxxxxx 
     password xxxxxxxxxxxxxxxxxx
 ```
 
-> The `machine` name was updated 7/2020 to `rbsc.repositories.sap.ondemand.com`.  Existing netrc entries should be updated accordingly.  The existing technical user credentials *should* remain valid.  If not, please re-generate and update in the netrc file.
+> The `machine` name was updated 7/2022 to `rbsc.repositories.cloud.sap`.  Existing netrc entries should be updated accordingly.  The existing technical user credentials *should* remain valid.  If not, please re-generate and update in the netrc file.
 
 The **netrc** credential technique is a stand **cURL** API.  For complete documentation, see [gnu.org](https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html).
 

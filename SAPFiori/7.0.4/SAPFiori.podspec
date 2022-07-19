@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPFiori Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.sap.ondemand.com/nexus3/repository/maven73555000100900005862/com/sap/mobile/platform/client/hcp/sdk/ios/uireuse/SAPFiori/7.0.4/SAPFiori-7.0.4-Release-xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900005862/com/sap/mobile/platform/client/hcp/sdk/ios/uireuse/SAPFiori/7.0.4/SAPFiori-7.0.4-Release-xcframework.zip' }
     spec.vendored_frameworks  = 'SAPFiori.xcframework'
     spec.framework            = 'SAPFiori'
     spec.dependency  'SAPCommon', '7.0.4'
