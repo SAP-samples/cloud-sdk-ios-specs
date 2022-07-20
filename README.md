@@ -171,6 +171,19 @@ For more info, see [blog](https://blogs.sap.com/2020/03/20/introducing-mac-catal
 
  > Quoting the SAP support site, *“you can download the SAP products that are associated with your S-user ID. While every visitor can browse the list of software products without any special permissions, downloading files requires the Software Download authorization; to request it, contact a user administrator in your company.”* This restriction also applies to the cloud shipment channel.
 
+# Troubleshooting
+
+## Error: None of your spec sources contain a spec satisfying the dependency: SAPCommon (~> x.0).
+
+Root Cause:
+- Folder `~/.cocoapods/repos/sap-samples-cloud-sdk-ios-specs` is either missing or not up-to-date.
+
+Solution:
+
+- Make sure that you added `source 'https://github.com/SAP-samples/cloud-sdk-ios-specs'` to your Podfile header.
+- Delete folder `~/.cocoapods/repos/sap-samples-cloud-sdk-ios-specs`
+- Run `pod repo update` to get the latest specifications.
+
 # Known Issues
 
 None.
