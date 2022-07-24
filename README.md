@@ -6,6 +6,8 @@
 
 This repository contains the CocoaPods specifications for frameworks in the SAP Business Technology Platform SDK for iOS. Frameworks downloaded here are identical to those available through SAP Service Marketplace, and on the [SAP Developer Site](https://developers.sap.com/topics/sap-btp-sdk-for-ios.html).
 
+If you want to consume the binary frameworks through Apple's Swift Package Manager (SPM) then visit https://github.com/SAP/cloud-sdk-ios.
+
 # Requirements
 
 1. Ruby
