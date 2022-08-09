@@ -22,10 +22,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        xcode: ['Xcode_12.5']
+        xcode: ['Xcode_12.5.1']
         experimental: [false]
         include:
-          - xcode: 'Xcode_13.0'
+          - xcode: 'Xcode_13.2.1'
             experimental: true
     continue-on-error: ${{ matrix.experimental }}        
     env:
