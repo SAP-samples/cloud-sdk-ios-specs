@@ -1,12 +1,12 @@
-platform :ios, '14.0'
+platform :ios, '15.0'
 use_frameworks!
 
 target 'TestApp' do
- pod 'SAPCommon', :podspec => "../SAPCommon/7.0.0/SAPCommon.podspec"
- pod 'SAPFoundation', :podspec => "../SAPFoundation/7.0.0/SAPFoundation.podspec"
- pod 'SAPFiori', :podspec => "../SAPFiori/7.0.0/SAPFiori.podspec"
- pod 'SAPFioriFlows', :podspec => "../SAPFioriFlows/7.0.0/SAPFioriFlows.podspec"
- pod 'SAPOData', :podspec => "../SAPOData/7.0.0/SAPOData.podspec"
- pod 'SAPOfflineOData', :podspec => "../SAPOfflineOData/7.0.0/SAPOfflineOData.podspec"
- pod 'SAPML', :podspec => "../SAPML/7.0.0/SAPML.podspec"
+ pod 'SAPCommon', :podspec => "../SAPCommon/9.0.1/SAPCommon.podspec"
+ pod 'SAPFoundation', :podspec => "../SAPFoundation/9.0.1/SAPFoundation.podspec"
+ pod 'SAPFiori', :podspec => "../SAPFiori/9.0.1/SAPFiori.podspec"
+ pod 'SAPFioriFlows', :podspec => "../SAPFioriFlows/9.0.1/SAPFioriFlows.podspec"
+ pod 'SAPOData', :podspec => "../SAPOData/9.0.1/SAPOData.podspec"
+ pod 'SAPOfflineOData', :podspec => "../SAPOfflineOData/9.0.1/SAPOfflineOData.podspec"
+ pod 'SAPML', :podspec => "../SAPML/9.0.1/SAPML.podspec"
 end
