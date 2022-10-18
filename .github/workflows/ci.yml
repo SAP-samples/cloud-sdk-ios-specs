@@ -1,4 +1,4 @@
-# Workflow supports podspec verification for iOS SDK 6.1.x (iOS 13) and iOS SDK 7.x (iOS 14)
+# Workflow supports podspec verification for iOS SDK 7.x and 8.x (iOS 14) and iOS SDK 9.x (iOS 15)
 name: CI
 
 on:
@@ -10,7 +10,7 @@ on:
       frameworkVersion:
         description: 'Framework Version'     
         required: true
-        default: '6.1.4'
+        default: '8.0.4'
       iOSVersion:
         description: 'iOS Version'
         required: true
@@ -18,18 +18,7 @@ on:
 
 jobs:
   verify-podspec-install:
-    runs-on: macos-11
-    strategy:
-      fail-fast: false
-      matrix:
-        xcode: ['Xcode_12.5.1']
-        experimental: [false]
-        include:
-          - xcode: 'Xcode_13.2.1'
-            experimental: true
-    continue-on-error: ${{ matrix.experimental }}        
-    env:
-      DEVELOPER_DIR: /Applications/${{ matrix.xcode }}.app/Contents/Developer
+    runs-on: macos-12
       
     steps:
     - uses: actions/checkout@v2
@@ -61,7 +50,7 @@ jobs:
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        iOSVersion=$(if [[ ${{steps.frameworkVersion.outputs.latest}} = 7* || ${{steps.frameworkVersion.outputs.latest}} = 8* ]]; then echo '14.0'; else echo '13.0'; fi)
+        iOSVersion=$(if [[ ${{steps.frameworkVersion.outputs.latest}} = 7* || ${{steps.frameworkVersion.outputs.latest}} = 8* ]]; then echo '14.0'; else echo '15.0'; fi)
         echo "$iOSVersion"
         echo "::set-output name=iOSVersion::$iOSVersion"
     - name: Create Podfile with latest podspecs
@@ -97,12 +86,43 @@ jobs:
         echo " pod 'SAPOfflineOData', :podspec => '../SAPOfflineOData/${{ github.event.inputs.frameworkVersion }}/SAPOfflineOData.podspec'" >> Podfile
         echo " pod 'SAPML', :podspec => '../SAPML/${{ github.event.inputs.frameworkVersion }}/SAPML.podspec'" >> Podfile
         echo "end" >> Podfile
-        cat Podfile           
+        cat Podfile
+    - name: "Displays Xcode current version"
+      run: sudo xcode-select -p
+    - name: Determine Xcode version needed
+      run: |
+
+        iOSVersion="${{ github.event.inputs.iOSVersion }}"
+        if [ -z "$iOSVersion" ]
+        then
+          frameworkVersion="${{ steps.frameworkVersion.outputs.latest }}"
+          iOSVersion=$(if [[ "$frameworkVersion" = 7* || "$frameworkVersion" = 8* ]]; then echo '14.0'; else echo '15.0'; fi)
+        fi
+
+        if [[ "$iOSVersion" == '14.0' ]]
+        then
+          echo "use Xcode 13"
+          neededXcode='Xcode_13.2.1'
+        elif [[ "$iOSVersion" == '15.0' ]]
+        then 
+          echo "use Xcode 14"
+          neededXcode='Xcode_14.0.1'    
+        else
+          exit 1
+        fi
+
+        echo "neededXcode=$neededXcode" >> $GITHUB_ENV
+    - name: "Set Xcode version 13"
+      if: env.neededXcode == 'Xcode_13.2.1'
+      run: sudo xcode-select -s /Applications/Xcode_13.2.1.app/Contents/Developer
+    - name: "Set Xcode version 14"
+      if: env.neededXcode == 'Xcode_14.0.1'
+      run: sudo xcode-select -s /Applications/Xcode_14.0.1.app/Contents/Developer                               
     - name: Create test application
       run: |
         cd .testing
         xcodegen generate
-        echo ${{ steps.sapcommon.outputs.lastVersion }}
+        echo ${{ steps.sapcommon.outputs.lastVersion }}                               
     - name: Install pods for test application
       run: |
         cd .testing
