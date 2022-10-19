@@ -16,5 +16,6 @@ targets:
 
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: "com.sap.samples.cloud.sdk.ios.specs.TestApp"
+      GENERATE_INFOPLIST_FILE: true
 
     sources: [TestApp]
