@@ -21,7 +21,7 @@ jobs:
     runs-on: macos-12
       
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Create .netrc file with credentials to download binaries from SAP RSBC
       uses: little-core-labs/netrc-creds@master
       with:
@@ -32,7 +32,7 @@ jobs:
       run: brew install xcodegen
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v20.2
+      uses: tj-actions/changed-files@v32
       if: github.event_name != 'workflow_dispatch'
     - name: Determine relevant podspec versions (based on changed files)
       id: frameworkVersion
@@ -45,29 +45,29 @@ jobs:
           echo "File checked: ${file}."
         done
         echo ${relevantVersion}
-        echo "::set-output name=latest::$relevantVersion"
+        echo "determinedFrameworkVersion=$relevantVersion" >> $GITHUB_ENV
     - name: Determine iOSVersion
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        iOSVersion=$(if [[ ${{steps.frameworkVersion.outputs.latest}} = 7* || ${{steps.frameworkVersion.outputs.latest}} = 8* ]]; then echo '14.0'; else echo '15.0'; fi)
+        iOSVersion=$(if [[ ${{env.determinedFrameworkVersion}} = 7* || ${{env.determinedFrameworkVersion}} = 8* ]]; then echo '14.0'; else echo '15.0'; fi)
         echo "$iOSVersion"
-        echo "::set-output name=iOSVersion::$iOSVersion"
+        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV
     - name: Create Podfile with latest podspecs
       if: github.event_name != 'workflow_dispatch'
       run: |
         cd .testing
         rm Podfile
-        echo "platform :ios, '${{ steps.iOSVersion.outputs.iOSVersion }}'" >> Podfile
+        echo "platform :ios, '${{ env.iOSVersion }}'" >> Podfile
         echo "use_frameworks!" >> Podfile
         echo "target 'TestApp' do" >> Podfile
-        echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ steps.frameworkVersion.outputs.latest }}/SAPCommon.podspec'" >> Podfile
-        echo " pod 'SAPFoundation', :podspec => '../SAPFoundation/${{ steps.frameworkVersion.outputs.latest }}/SAPFoundation.podspec'" >> Podfile
-        echo " pod 'SAPFiori', :podspec => '../SAPFiori/${{ steps.frameworkVersion.outputs.latest }}/SAPFiori.podspec'" >> Podfile
-        echo " pod 'SAPFioriFlows', :podspec => '../SAPFioriFlows/${{ steps.frameworkVersion.outputs.latest }}/SAPFioriFlows.podspec'" >> Podfile
-        echo " pod 'SAPOData', :podspec => '../SAPOData/${{ steps.frameworkVersion.outputs.latest }}/SAPOData.podspec'" >> Podfile
-        echo " pod 'SAPOfflineOData', :podspec => '../SAPOfflineOData/${{ steps.frameworkVersion.outputs.latest }}/SAPOfflineOData.podspec'" >> Podfile
-        echo " pod 'SAPML', :podspec => '../SAPML/${{ steps.frameworkVersion.outputs.latest }}/SAPML.podspec'" >> Podfile
+        echo " pod 'SAPCommon', :podspec => '../SAPCommon/${{ env.determinedFrameworkVersion }}/SAPCommon.podspec'" >> Podfile
+        echo " pod 'SAPFoundation', :podspec => '../SAPFoundation/${{ env.determinedFrameworkVersion }}/SAPFoundation.podspec'" >> Podfile
+        echo " pod 'SAPFiori', :podspec => '../SAPFiori/${{ env.determinedFrameworkVersion }}/SAPFiori.podspec'" >> Podfile
+        echo " pod 'SAPFioriFlows', :podspec => '../SAPFioriFlows/${{ env.determinedFrameworkVersion }}/SAPFioriFlows.podspec'" >> Podfile
+        echo " pod 'SAPOData', :podspec => '../SAPOData/${{ env.determinedFrameworkVersion }}/SAPOData.podspec'" >> Podfile
+        echo " pod 'SAPOfflineOData', :podspec => '../SAPOfflineOData/${{ env.determinedFrameworkVersion }}/SAPOfflineOData.podspec'" >> Podfile
+        echo " pod 'SAPML', :podspec => '../SAPML/${{ env.determinedFrameworkVersion }}/SAPML.podspec'" >> Podfile
         echo "end" >> Podfile
         cat Podfile
     - name: Create Podfile with version specified manually
@@ -95,8 +95,7 @@ jobs:
         iOSVersion="${{ github.event.inputs.iOSVersion }}"
         if [ -z "$iOSVersion" ]
         then
-          frameworkVersion="${{ steps.frameworkVersion.outputs.latest }}"
-          iOSVersion=$(if [[ "$frameworkVersion" = 7* || "$frameworkVersion" = 8* ]]; then echo '14.0'; else echo '15.0'; fi)
+          iOSVersion="${{ env.iOSVersion }}"
         fi
 
         if [[ "$iOSVersion" == '14.0' ]]
@@ -121,8 +120,7 @@ jobs:
     - name: Create test application
       run: |
         cd .testing
-        xcodegen generate
-        echo ${{ steps.sapcommon.outputs.lastVersion }}                               
+        xcodegen generate                            
     - name: Install pods for test application
       run: |
         cd .testing
