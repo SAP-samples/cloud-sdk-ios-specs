@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPFoundation Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900006843/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/8.0.5/SAPFoundation-8.0.4-Release-xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900006843/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/8.0.5/SAPFoundation-8.0.5-Release-xcframework.zip' }
     spec.vendored_frameworks  = 'SAPFoundation.xcframework'
     spec.framework            = 'SAPFoundation'
     spec.dependency  'SAPCommon', '8.0.5'
