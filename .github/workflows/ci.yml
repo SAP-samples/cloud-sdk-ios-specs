@@ -46,8 +46,8 @@ jobs:
         done
         echo ${relevantVersion}
         echo "determinedFrameworkVersion=$relevantVersion" >> $GITHUB_ENV
-    - name: Comment on PR
-      if: github.event_name != 'workflow_dispatch' && env.determinedFrameworkVersion == '8.0.0'
+    - name: Comment on PR if no framework version can be determined
+      if: github.event_name == 'pull_request' && env.determinedFrameworkVersion == '8.0.0'
       uses: actions/github-script@v6
       with:
         script: |
