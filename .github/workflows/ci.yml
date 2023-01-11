@@ -38,7 +38,7 @@ jobs:
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        relevantVersion=7.0.6 # safeguard in case no podspec file(s) were changed
+        relevantVersion=8.0.0 # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           lastVersion=`echo ${file} | cut -d / -f 2`
           [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
@@ -46,6 +46,17 @@ jobs:
         done
         echo ${relevantVersion}
         echo "determinedFrameworkVersion=$relevantVersion" >> $GITHUB_ENV
+    - name: Comment on PR
+      if: github.event_name != 'workflow_dispatch' && env.determinedFrameworkVersion == '8.0.0'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚨 Cannot determine relevant framework version'
+          })
     - name: Determine iOSVersion
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
