@@ -14,6 +14,14 @@ replace_in_specs: # e.g. make replace_in_specs OLD=13.0 NEW=14.0 IN_VERSION=6.1.
 	sed -i '' 's/$(OLD)/$(NEW)/' SAPML/$(IN_VERSION)/SAPML.podspec
 	sed -i '' 's/$(OLD)/$(NEW)/' SAPOData/$(IN_VERSION)/SAPOData.podspec
 	sed -i '' 's/$(OLD)/$(NEW)/' SAPOfflineOData/$(IN_VERSION)/SAPOfflineOData.podspec
+replace_pattern_in_specs: # e.g. make replace_pattern_in_specs PATTERN=spec.source OLD=13.0 NEW=14.0 IN_VERSION=6.1.0
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPCommon/$(IN_VERSION)/SAPCommon.podspec
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPFoundation/$(IN_VERSION)/SAPFoundation.podspec
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPFiori/$(IN_VERSION)/SAPFiori.podspec
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPFioriFlows/$(IN_VERSION)/SAPFioriFlows.podspec
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPML/$(IN_VERSION)/SAPML.podspec
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPOData/$(IN_VERSION)/SAPOData.podspec
+	sed -i '' '/$(PATTERN)/ s/$(OLD)/$(NEW)/g' SAPOfflineOData/$(IN_VERSION)/SAPOfflineOData.podspec
 download_zips: # e.g. make download_zips VERSION=6.1.0
 	curl -LO https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPCommon/$(VERSION)/SAPCommon-$(VERSION)-Release-xcframework.zip -netrc
 	curl -LO https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900005307dev/com/sap/mobile/platform/client/hcp/sdk/ios/foundation/SAPFoundation/$(VERSION)/SAPFoundation-$(VERSION)-Release-xcframework.zip -netrc
