@@ -38,7 +38,7 @@ jobs:
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        relevantVersion=9.0.0 # safeguard in case no podspec file(s) were changed
+        relevantVersion=9.0.1 # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           lastVersion=`echo ${file} | cut -d / -f 2`
           [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
@@ -47,7 +47,7 @@ jobs:
         echo ${relevantVersion}
         echo "determinedFrameworkVersion=$relevantVersion" >> $GITHUB_ENV
     - name: Comment on PR if no framework version can be determined
-      if: github.event_name == 'pull_request' && env.determinedFrameworkVersion == '9.0.0'
+      if: github.event_name == 'pull_request' && env.determinedFrameworkVersion == '9.0.1'
       uses: actions/github-script@v6
       with:
         script: |
