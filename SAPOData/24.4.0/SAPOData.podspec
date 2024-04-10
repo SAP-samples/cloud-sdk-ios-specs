@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPOData Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900008403dev/ios/SAPOData/24.4.0/SAPOData-24.4.0-Release.xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900008403/ios/SAPOData/24.4.0/SAPOData-24.4.0-Release.xcframework.zip' }
     spec.vendored_frameworks  = 'SAPOData.xcframework'
     spec.framework            = 'SAPOData'
     spec.dependency  'SAPFoundation', '24.4.0'

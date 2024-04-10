@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPOfflineOData Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900008403dev/ios/SAPOfflineOData/24.4.0/SAPOfflineOData-24.4.0-Release.xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73554900100900008403/ios/SAPOfflineOData/24.4.0/SAPOfflineOData-24.4.0-Release.xcframework.zip' }
     spec.vendored_frameworks  = 'SAPOfflineOData.xcframework'
     spec.framework            = 'SAPOfflineOData'
     spec.dependency  'SAPOData', '24.4.0'
