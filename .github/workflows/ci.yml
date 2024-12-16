@@ -61,9 +61,18 @@ jobs:
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        iOSVersion=$(if [[ ${{env.determinedFrameworkVersion}} = 9* ]]; then echo '15.0'; else echo '16.0'; fi)
-        echo "$iOSVersion"
-        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV
+        frameworkVersion=${{ env.determinedFrameworkVersion }}
+        majorMinorVersion=$(echo $frameworkVersion | cut -d '.' -f 1-2)
+        if [ "$majorMinorVersion" = "24.12" ]; then
+          iOSVersion="17.0"
+        elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
+          iOSVersion="16.0"
+        else
+          iOSVersion="16.0"  # Default fallback
+        fi
+        echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
+        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV    - name: Create Podfile with latest podspecs
+        
     - name: Create Podfile with latest podspecs
       if: github.event_name != 'workflow_dispatch'
       run: |
@@ -100,13 +109,17 @@ jobs:
         cat Podfile
     - name: "Displays Xcode current version"
       run: sudo xcode-select -p
-    - name: Determine Xcode version needed
+    - name: Determine Xcode version based on iOS version
       run: |
-        neededXcode='Xcode_15.4'    
+        if [[ ${{ env.iOSVersion }} == '17.0' ]]; then
+          neededXcode='Xcode_16.1'
+        else
+          neededXcode='Xcode_15.4'
+        fi
         echo "neededXcode=$neededXcode" >> $GITHUB_ENV
-    - name: "Set Xcode version 15.4"
-      if: env.neededXcode == 'Xcode_15.4'
-      run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer                               
+    - name: "Set Xcode version"
+      if: env.neededXcode != ''
+      run: sudo xcode-select -s /Applications/${{ env.neededXcode }}.app/Contents/Developer
     - name: Create test application
       run: |
         cd .testing
