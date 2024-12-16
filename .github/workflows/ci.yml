@@ -61,24 +61,18 @@ jobs:
       id: iOSVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        declare -A versionMapping
-        versionMapping=(
-          ["24.12"]="17.0"
-          ["24.8"]="16.0"
-          ["24.4"]="16.0"
-          ["10.0"]="16.0"
-        )
         frameworkVersion=${{ env.determinedFrameworkVersion }}
         majorMinorVersion=$(echo $frameworkVersion | cut -d '.' -f 1-2)
-        if [ -n "${versionMapping[$majorMinor]}" ]; then
-          iOSVersion="${versionMapping[$majorMinor]}"
-        else
+        if [ "$majorMinorVersion" = "24.12" ]; then
+          iOSVersion="17.0"
+        elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
+        else
+          iOSVersion="16.0"  # Default fallback
         fi
-        # iOSVersion=$(if [[ ${{env.determinedFrameworkVersion}} = 9* ]]; then echo '15.0'; else echo '16.0'; fi)
-        # echo "$iOSVersion"
         echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
-        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV
+        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV    - name: Create Podfile with latest podspecs
+        
     - name: Create Podfile with latest podspecs
       if: github.event_name != 'workflow_dispatch'
       run: |
