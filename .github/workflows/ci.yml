@@ -71,7 +71,7 @@ jobs:
           iOSVersion="16.0"  # Default fallback
         fi
         echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
-        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV    - name: Create Podfile with latest podspecs
+        echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV
         
     - name: Create Podfile with latest podspecs
       if: github.event_name != 'workflow_dispatch'
