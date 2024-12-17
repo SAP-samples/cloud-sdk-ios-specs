@@ -111,7 +111,7 @@ jobs:
       run: sudo xcode-select -p
     - name: Determine Xcode version based on iOS version
       run: |
-        if [[ ${{ env.iOSVersion }} = '17.0' ]]; then
+        if [[ ${{ env.iOSVersion }} == '17.0' ]]; then
           neededXcode='Xcode_16.1'
         else
           neededXcode='Xcode_15.4'
