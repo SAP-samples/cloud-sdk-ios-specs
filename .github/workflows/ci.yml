@@ -10,11 +10,11 @@ on:
       frameworkVersion:
         description: 'Framework Version'     
         required: true
-        default: '9.2.7'
+        default: '24.12.0'
       iOSVersion:
         description: 'iOS Version'
         required: true
-        default: '15.0'
+        default: '17.0'
 
 jobs:
   verify-podspec-install:
@@ -38,7 +38,7 @@ jobs:
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        relevantVersion=9.0.1 # safeguard in case no podspec file(s) were changed
+        relevantVersion=24.12.0 # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           lastVersion=`echo ${file} | cut -d / -f 2`
           [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
@@ -111,7 +111,7 @@ jobs:
       run: sudo xcode-select -p
     - name: Determine Xcode version based on iOS version
       run: |
-        if [[ -z "${{ env.iOSVersion }}" ]]; then
+        if [ -z "${{ env.iOSVersion }}" ]; then
           echo "iOSVersion is not set. Using latest Xcode version."
           neededXcode='Xcode_16.1'
         elif [[ ${{ env.iOSVersion }} == '17.0' ]]; then
