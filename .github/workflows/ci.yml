@@ -26,7 +26,7 @@ jobs:
       uses: bcomnes/netrc-creds@v3
       with:
         machine: rbsc.repositories.cloud.sap
-        login: sap-sdkiospecs
+        login: 0000202418-iossdk
         password: ${{ secrets.RSBC_USER_BASICAUTH_PWD }}
     - name: Install required tools
       run: brew install xcodegen
