@@ -1,17 +1,17 @@
 Pod::Spec.new do |spec|
     spec.platform             = :ios, "16.0"
     spec.name                 = 'SAPOfflineOData'
-    spec.version              = '24.8.6'
+    spec.version              = '24.8.7'
     spec.homepage             = 'https://developers.sap.com/topics/cloud-platform-sdk-for-ios.html'
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPOfflineOData Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900007915/ios/SAPOfflineOData/24.8.6/SAPOfflineOData-24.8.6-Release.xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900007915/ios/SAPOfflineOData/24.8.7/SAPOfflineOData-24.8.7-Release.xcframework.zip' }
     spec.vendored_frameworks  = 'SAPOfflineOData.xcframework'
     spec.framework            = 'SAPOfflineOData'
-    spec.dependency  'SAPOData', '24.8.6'
-    spec.dependency  'SAPCommon', '24.8.6'
-    spec.dependency  'SAPFoundation', '24.8.6'
+    spec.dependency  'SAPOData', '24.8.7'
+    spec.dependency  'SAPCommon', '24.8.7'
+    spec.dependency  'SAPFoundation', '24.8.7'
     spec.license              = { :type => 'SAP Developer License', :text => <<-LICENSE
     Your use of this 'SAP Cloud Platform SDK for iOS' software is subject to the terms of the following SAP Developer License Agreement.   Do not use or access the software unless you agree to the terms and conditions of the License Agreement.  Note that you may use the software solely for the purpose of developing applications for use with 'SAP Cloud Platform Mobile Services'.
 
