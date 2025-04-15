@@ -63,7 +63,7 @@ jobs:
       run: |
         frameworkVersion=${{ env.determinedFrameworkVersion }}
         majorMinorVersion=$(echo $frameworkVersion | cut -d '.' -f 1-2)
-        if [ "$majorMinorVersion" = "24.12" ]; then
+        if [ "$majorMinorVersion" = "24.12" || [ "$majorMinorVersion" = "25.4" ] ]; then
           iOSVersion="17.0"
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
