@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       frameworkVersion:
-        description: 'Framework Version'     
+        description: 'Framework Version'
         required: true
         default: '24.12.0'
       iOSVersion:
@@ -18,7 +18,7 @@ on:
 
 jobs:
   verify-podspec-install:
-    runs-on: macos-14
+    runs-on: macos-15
       
     steps:
     - uses: actions/checkout@v4
@@ -68,9 +68,10 @@ jobs:
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
         else
-          iOSVersion="16.0"  # Default fallback
+          iOSVersion="17.0"  # Default fallback
         fi
         echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
+        echo "majorMinorVersion=$majorMinorVersion" >> $GITHUB_ENV
         echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV
         
     - name: Create Podfile with latest podspecs
@@ -111,13 +112,17 @@ jobs:
       run: sudo xcode-select -p
     - name: Determine Xcode version based on iOS version
       run: |
-        if [ -z "${{ env.iOSVersion }}" ]; then
-          echo "iOSVersion is not set. Using latest Xcode version."
+        frameworkVersion=${{ env.majorMinorVersion }}
+        if [ "$sdkVersion" = "25.8" ]; then
+          neededXcode='Xcode_16.4'
+        elif [ "$frameworkVersion" = "25.4" ]; then
+          neededXcode='Xcode_16.2'
+        elif [ "$frameworkVersion" = "24.12" ]; then
           neededXcode='Xcode_16.1'
-        elif [[ ${{ env.iOSVersion }} == '17.0' ]]; then
-          neededXcode='Xcode_16.1'
+        elif [ "$frameworkVersion" = "24.8" ] || [ "$frameworkVersion" = "24.4" ] || [ "$frameworkVersion" = "10.0" ]; then
+          neededXcode='Xcode_16.0'
         else
-          neededXcode='Xcode_15.4'
+          neededXcode='Xcode_16.4'  # Default fallback
         fi
         echo "neededXcode=$neededXcode" >> $GITHUB_ENV
     - name: "Set Xcode version"
@@ -126,7 +131,7 @@ jobs:
     - name: Create test application
       run: |
         cd .testing
-        xcodegen generate                            
+        xcodegen generate
     - name: Install pods for test application
       run: |
         cd .testing
@@ -134,4 +139,4 @@ jobs:
     - name: Build test application (which uses the frameworks)
       run: |
         cd .testing
-        xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15' clean build
+        xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' clean build
