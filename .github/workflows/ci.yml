@@ -110,6 +110,8 @@ jobs:
         cat Podfile
     - name: "Displays Xcode current version"
       run: sudo xcode-select -p
+    - name: "List installed Xcode versions"
+      run: ls /Applications | grep Xcode
     - name: Determine Xcode version based on iOS version
       run: |
         frameworkVersion=${{ env.majorMinorVersion }}
