@@ -135,7 +135,7 @@ jobs:
     - name: Create test application
       run: |
         cd .testing
-        xcodegen generate
+        XCODEGEN_PROJECT_OBJECT_VERSION=60 xcodegen generate
     - name: Install pods for test application
       run: |
         cd .testing
