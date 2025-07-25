@@ -38,7 +38,7 @@ jobs:
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        relevantVersion=24.12.0 # safeguard in case no podspec file(s) were changed
+        relevantVersion=${{ env.determinedFrameworkVersion }} # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           lastVersion=`echo ${file} | cut -d / -f 2`
           [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
