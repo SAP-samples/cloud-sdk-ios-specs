@@ -68,7 +68,7 @@ jobs:
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
         else
-          iOSVersion="${{ env.iOSVersion }}"  # Default fallback
+          iOSVersion="17.0"  # Default fallback
         fi
         echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
         echo "majorMinorVersion=$majorMinorVersion" >> $GITHUB_ENV
@@ -113,10 +113,10 @@ jobs:
     - name: Determine Xcode version based on iOS version
       run: |
         frameworkVersion=${{ env.majorMinorVersion }}
-        if [ "$sdkVersion" = "25.8" ]; then
+        if [ "$frameworkVersion" = "25.8" ]; then
           neededXcode='Xcode_16.4'
         elif [ "$frameworkVersion" = "25.4" ]; then
-          neededXcode='Xcode_16.2'
+          neededXcode='Xcode_16.4'
         elif [ "$frameworkVersion" = "24.12" ]; then
           neededXcode='Xcode_16.1'
         elif [ "$frameworkVersion" = "24.8" ] || [ "$frameworkVersion" = "24.4" ] || [ "$frameworkVersion" = "10.0" ]; then
