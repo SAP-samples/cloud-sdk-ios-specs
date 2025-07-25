@@ -38,7 +38,7 @@ jobs:
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        relevantVersion=${{ env.determinedFrameworkVersion }} # safeguard in case no podspec file(s) were changed
+        relevantVersion=${{ env.frameworkVersion }} # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           lastVersion=`echo ${file} | cut -d / -f 2`
           [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
@@ -63,12 +63,12 @@ jobs:
       run: |
         frameworkVersion=${{ env.determinedFrameworkVersion }}
         majorMinorVersion=$(echo $frameworkVersion | cut -d '.' -f 1-2)
-        if [ "$majorMinorVersion" = "24.12" ] || [ "$majorMinorVersion" = "25.4" ]; then
+        if [ "$majorMinorVersion" = "24.12" ] || [ "$majorMinorVersion" = "25.4" ] || [ "$majorMinorVersion" = "25.8" ]; then
           iOSVersion="17.0"
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
         else
-          iOSVersion="17.0"  # Default fallback
+          iOSVersion="${{ env.iOSVersion }}"  # Default fallback
         fi
         echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
         echo "majorMinorVersion=$majorMinorVersion" >> $GITHUB_ENV
