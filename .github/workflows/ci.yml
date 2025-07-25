@@ -37,6 +37,8 @@ jobs:
     - name: Determine relevant podspec versions (based on changed files)
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
+      env:
+        frameworkVersion: '25.4.0'
       run: |
         relevantVersion=${{ env.frameworkVersion }} # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
