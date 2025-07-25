@@ -10,7 +10,7 @@ on:
       frameworkVersion:
         description: 'Framework Version'
         required: true
-        default: '24.12.0'
+        default: '25.4.0'
       iOSVersion:
         description: 'iOS Version'
         required: true
