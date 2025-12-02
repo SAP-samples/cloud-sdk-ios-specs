@@ -18,7 +18,7 @@ on:
 
 jobs:
   verify-podspec-install:
-    runs-on: macos-14
+    runs-on: macos-15
       
     steps:
     - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
       id: frameworkVersion
       if: github.event_name != 'workflow_dispatch'
       run: |
-        relevantVersion=24.12.0 # safeguard in case no podspec file(s) were changed
+        relevantVersion=25.4.0 # safeguard in case no podspec file(s) were changed
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           lastVersion=`echo ${file} | cut -d / -f 2`
           [[ $lastVersion == [0-9]* ]] && relevantVersion=$lastVersion
@@ -70,8 +70,9 @@ jobs:
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
         else
-          iOSVersion="16.0"  # Default fallback
+          iOSVersion="17.0"  # Default fallback
         fi
+        echo "majorMinorVersion=$majorMinorVersion" >> $GITHUB_ENV
         echo "Framework version: $frameworkVersion -> iOS version: $iOSVersion"
         echo "iOSVersion=$iOSVersion" >> $GITHUB_ENV
         
@@ -111,15 +112,20 @@ jobs:
         cat Podfile
     - name: "Displays Xcode current version"
       run: sudo xcode-select -p
+    - name: "List installed Xcode versions"
+      run: ls /Applications | grep Xcode
     - name: Determine Xcode version based on iOS version
       run: |
-        if [ -z "${{ env.iOSVersion }}" ]; then
-          echo "iOSVersion is not set. Using latest Xcode version."
-          neededXcode='Xcode_16.1'
-        elif [[ ${{ env.iOSVersion }} == '17.0' ]]; then
-          neededXcode='Xcode_16.1'
+        frameworkVersion=${{ env.majorMinorVersion }}
+        echo "Framework major.minor version: $frameworkVersion"
+        if [ "$frameworkVersion" = "25.8" ] || [ "$frameworkVersion" = "25.4" ]; then
+          neededXcode="Xcode_16.3"
+        elif [ "$frameworkVersion" = "24.12" ]; then
+          neededXcode="Xcode_16.1"
+        elif [ "$frameworkVersion" = "25.11" ]; then
+          neededXcode="Xcode_26.0.1"
         else
-          neededXcode='Xcode_15.4'
+          neededXcode="Xcode_16.3"  # Default fallback
         fi
         echo "neededXcode=$neededXcode" >> $GITHUB_ENV
     - name: "Set Xcode version"
@@ -128,7 +134,7 @@ jobs:
     - name: Create test application
       run: |
         cd .testing
-        xcodegen generate                            
+        XCODEGEN_PROJECT_OBJECT_VERSION=60 xcodegen generate
     - name: Install pods for test application
       run: |
         cd .testing
