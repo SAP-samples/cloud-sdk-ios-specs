@@ -65,6 +65,8 @@ jobs:
         majorMinorVersion=$(echo $frameworkVersion | cut -d '.' -f 1-2)
         if [ "$majorMinorVersion" = "24.12" ] || [ "$majorMinorVersion" = "25.4" ] || [ "$majorMinorVersion" = "25.8" ]; then
           iOSVersion="17.0"
+        elif [ "$majorMinorVersion" = "25.11" ]; then
+          iOSVersion="18.0"
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
         else
