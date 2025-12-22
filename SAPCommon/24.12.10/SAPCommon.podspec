@@ -1,12 +1,12 @@
 Pod::Spec.new do |spec|
     spec.platform             = :ios, "17.0"
     spec.name                 = 'SAPCommon'
-    spec.version              = '24.12.9'
+    spec.version              = '24.12.10'
     spec.homepage             = 'https://developers.sap.com/topics/cloud-platform-sdk-for-ios.html'
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPCommon Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900007915/ios/SAPCommon/24.12.9/SAPCommon-24.12.9-Release.xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900007915/ios/SAPCommon/24.12.10/SAPCommon-24.12.9-Release.xcframework.zip' }
     spec.vendored_frameworks  = 'SAPCommon.xcframework'
     spec.framework            = 'SAPCommon'
 

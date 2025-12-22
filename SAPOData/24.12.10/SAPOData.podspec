@@ -1,16 +1,16 @@
 Pod::Spec.new do |spec|
     spec.platform             = :ios, "17.0"
     spec.name                 = 'SAPOData'
-    spec.version              = '24.12.9'
+    spec.version              = '24.12.10'
     spec.homepage             = 'https://developers.sap.com/topics/cloud-platform-sdk-for-ios.html'
     spec.authors              = 'SAP SE'
     spec.summary              = 'SAP BTP SDK for iOS - SAPOData Framework'
     spec.documentation_url    = 'https://help.sap.com/viewer/p/SAP_CLOUD_PLATFORM_SDK_FOR_IOS'
-    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900007915/ios/SAPOData/24.12.9/SAPOData-24.12.9-Release.xcframework.zip' }
+    spec.source               = { :http => 'https://rbsc.repositories.cloud.sap/nexus3/repository/maven73555000100900007915/ios/SAPOData/24.12.10/SAPOData-24.12.9-Release.xcframework.zip' }
     spec.vendored_frameworks  = 'SAPOData.xcframework'
     spec.framework            = 'SAPOData'
-    spec.dependency  'SAPFoundation', '24.12.9'
-    spec.dependency  'SAPCommon', '24.12.9'
+    spec.dependency  'SAPFoundation', '24.12.10'
+    spec.dependency  'SAPCommon', '24.12.10'
     spec.license              = { :type => 'SAP Developer License', :text => <<-LICENSE
     Your use of this 'SAP Cloud Platform SDK for iOS' software is subject to the terms of the following SAP Developer License Agreement.   Do not use or access the software unless you agree to the terms and conditions of the License Agreement.  Note that you may use the software solely for the purpose of developing applications for use with 'SAP Cloud Platform Mobile Services'.
 
