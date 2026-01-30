@@ -144,4 +144,4 @@ jobs:
     - name: Build test application (which uses the frameworks)
       run: |
         cd .testing
-        xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' clean build
+        xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'generic/platform=iOS Simulator,OS=latest,name=iPhone 16' clean build
