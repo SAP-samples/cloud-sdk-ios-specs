@@ -127,7 +127,7 @@ jobs:
         elif [ "$frameworkVersion" = "26.1" ]; then
           neededXcode="Xcode_26.2"
         elif [ "$frameworkVersion" = "26.4" ]; then
-          neededXcode="Xcode_26.4"
+          neededXcode="Xcode_26.3"
         else
           neededXcode="Xcode_16.3"  # Default fallback
         fi
