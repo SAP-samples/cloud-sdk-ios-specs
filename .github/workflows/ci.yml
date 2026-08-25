@@ -18,7 +18,7 @@ on:
 
 jobs:
   verify-podspec-install:
-    runs-on: macos-15
+    runs-on: macos-26
     permissions:
       contents: read
       pull-requests: write
@@ -68,7 +68,7 @@ jobs:
         majorMinorVersion=$(echo $frameworkVersion | cut -d '.' -f 1-2)
         if [ "$majorMinorVersion" = "24.12" ] || [ "$majorMinorVersion" = "25.4" ] || [ "$majorMinorVersion" = "25.8" ]; then
           iOSVersion="17.0"
-        elif [ "$majorMinorVersion" = "25.11" ] || [ "$majorMinorVersion" = "26.1" ] || [ "$majorMinorVersion" = "26.4" ]; then
+        elif [ "$majorMinorVersion" = "25.11" ] || [ "$majorMinorVersion" = "26.1" ] || [ "$majorMinorVersion" = "26.4" ] || [ "$majorMinorVersion" = "26.8" ]; then
           iOSVersion="18.0"
         elif [ "$majorMinorVersion" = "24.8" ] || [ "$majorMinorVersion" = "24.4" ] || [ "$majorMinorVersion" = "10.0" ]; then
           iOSVersion="16.0"
@@ -131,6 +131,8 @@ jobs:
           neededXcode="Xcode_26.2"
         elif [ "$frameworkVersion" = "26.4" ]; then
           neededXcode="Xcode_26.3"
+        elif [ "$frameworkVersion" = "26.8" ]; then
+          neededXcode="Xcode_26.6"
         else
           neededXcode="Xcode_16.3"  # Default fallback
         fi
@@ -151,8 +153,8 @@ jobs:
         cd .testing
         frameworkVersion=${{ env.majorMinorVersion }}
         echo "Framework major.minor version: $frameworkVersion"
-        if [ "$frameworkVersion" = "26.1" ] || [ "$frameworkVersion" = "26.4" ]; then
-          echo "Building for arm64 only (framework 26.1 or 26.4)"
+        if [ "$frameworkVersion" = "26.1" ] || [ "$frameworkVersion" = "26.4" ] || [ "$frameworkVersion" = "26.8" ]; then
+          echo "Building for arm64 only (framework 26.1, 26.4 or 26.8)"
           xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'generic/platform=iOS Simulator,OS=latest,name=iPhone 16' clean build ARCHS=arm64
         else
           xcodebuild -workspace TestApp.xcworkspace -scheme 'TestApp' -sdk iphonesimulator -destination 'generic/platform=iOS Simulator,OS=latest,name=iPhone 16' clean build
